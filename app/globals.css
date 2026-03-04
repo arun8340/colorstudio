@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -12,15 +14,23 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Color columns — flex expand on hover */
+.color-col {
+  flex: 1;
+  min-height: 0;
+}
+
+@media (min-width: 640px) {
+  .color-col {
+    transition: flex 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .color-col:hover {
+    flex: 1.6;
+  }
 }
